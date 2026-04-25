@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gnosis - Login</title>
+    <script src="./js/default.js"></script>
+</head>
+<body>
+    <div class="body-login d-flex col">
+        <div class="w-50 col_login_e d-flex align-items-center row">
+           <div class="logo-container">
+                <div class="logo-icon">
+                    <img id="logo_estrela" src="./img/logo_estrela.png" alt="Logo_estrela">
+                </div>
+                
+                <span class="logo-text">Gnosis</span>
+            </div>
+           <div class="w-75 row gap-2">
+                <h3 style="font-size: 3.2em; font-family: 'Serif', Georgia, serif;">Visualize a construção do seu conhecimento</h3>
+                <p style="font-family: 'Serif', Georgia, serif;">Gnosis o ajuda a enxergar suas disciplinas e tarefas como constelações de sentido</p>
+                <div class="row gap-3">
+                    <section class="card-item">
+                        <span class="status-dot dot-blue"></span>
+                        <p class="m-0">Clareza do mapeamento de atividades</p>
+                    </section>
+                    <section class="card-item">
+                        <span class="status-dot dot-gold"></span>
+                        <p class="m-0">Foco no essencial (Minimalismo Grego)</p>
+                    </section>
+                </div>
+           </div>
+           <div class="text-secondary">
+                <p>&copy; 2026 Gnosis. Todos os direitos reservados.</p>
+           </div>
+        </div>
+        <div class="w-50 col_login_d d-flex align-items-center justify-content-center">
+            <div class="w-50">
+                <h3 style="font-size: 2em; font-family: 'Serif', Georgia, serif;">Bem-vindo</h3>
+                <p class="text-secondary">Acesse a sua constelação de estudos.</p>
+                <form class="row gap-3 mt-5 mb-5">
+                    <section>
+                        <label class="form-label text-dark">E-mail</label>
+                        <div class="input-group-custom">
+                            <i class="fa-regular fa-envelope icon-input"></i>
+                            <input class="form-control custom-input bg-secondary bg-opacity-10" type="email" required>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label text-dark">Senha</label>
+                            <a data-bs-toggle="modal" data-bs-target="#esqueceu_senha" class="text-decoration-none" style="font-size: 0.9em; color: #32A3B1;">Esqueceu a senha?</a>
+                        </div>
+                        <div class="input-group-custom">
+                            <i class="fa-solid fa-lock icon-input"></i>
+                            <input id="login_senha" class="form-control custom-input bg-secondary bg-opacity-10" type="password" required>
+                            <i class="fa-regular fa-eye toggle-password" onclick="toggleSenha('login_senha', this)"></i>
+                        </div>
+                    </section>
+
+                    <div class="d-grid mt-2">
+                        <button class="btn text-light BOTAO_DOURADO" style="padding: 0.75em 0px;">
+                            <strong class="me-1">Entrar</strong> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+                <span class="d-flex justify-content-center">
+                    <p class="me-1">Não tem conta?</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#cadastrar_usuario" class="fw-bold" style="color: #32A3B1;">Cadastre-se</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="modal fade" id="cadastrar_usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-light text-dark">
+                    <div class="modal-header">
+                        <img id="logo_estrela" src="./img/logo_estrela.png" alt="logo_estrela">
+                        <h5 class="modal-title ms-2" id="exampleModalLabel">Gnosis - Cadastro</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="padding: 1em 3em 2em 3em;">
+                        <form class="form_cadastrar_usuario row gap-3">
+                            <section>
+                                <label class="form-label text-dark">E-mail</label>                        
+                                <div class="input-group-custom">
+                                    <i class="fa-regular fa-envelope icon-input"></i>
+                                    <input name="cadastrar_email" class="form-control custom-input bg-secondary bg-opacity-10" type="email" required>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label text-dark">Senha</label>
+                                </div>
+                                <div class="input-group-custom">
+                                    <i class="fa-solid fa-lock icon-input"></i>
+                                    <input name="cadastrar_senha" id="cadastrar_senha" class="form-control custom-input bg-secondary bg-opacity-10" type="password" required>
+                                    <i class="fa-regular fa-eye toggle-password" onclick="toggleSenha('cadastrar_senha', this)"></i>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label text-dark">Confirmar Senha</label>
+                                </div>
+                                <div class="input-group-custom">
+                                    <i class="fa-solid fa-lock icon-input"></i>
+                                    <input id="cadastrar_confirmar" name="cadastrar_confirmar" class="form-control custom-input bg-secondary bg-opacity-10" type="password" required>
+                                    <i class="fa-regular fa-eye toggle-password" onclick="toggleSenha('cadastrar_confirmar', this)"></i>
+                                </div>
+                            </section>
+
+                            <div class="d-grid mt-2">
+                                <button class="btn text-light BOTAO_DOURADO">
+                                    <strong class="me-1">Cadastrar</strong>
+                                </button>
+                            </div>
+                        </form>                                                
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="esqueceu_senha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-light text-dark">
+                    <div class="modal-header">
+                        <img id="logo_estrela" src="./img/logo_estrela.png" alt="logo_estrela">
+                        <h5 class="modal-title ms-2" id="exampleModalLabel">Gnosis - Esqueceu Senha</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_esqueceu_senha">
+                            <section>                       
+                                <div class="input-group-custom">
+                                    <i class="fa-regular fa-envelope icon-input"></i>
+                                    <input name="esqueceu_senha_email" class="form-control custom-input bg-secondary bg-opacity-10" type="email" placeholder="Digite seu email: " required>
+                                </div>
+                            </section>
+                            <div class="d-grid mt-2">
+                                <button class="btn text-light BOTAO_DOURADO">
+                                    <strong class="me-1">Enviar e-mail</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
