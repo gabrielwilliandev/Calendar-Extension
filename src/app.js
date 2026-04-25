@@ -13,8 +13,13 @@
 // Server: é o cérebro da api
 const express = require('express');
 const app = express();
+const path = require('path') // 
 
 const usuarioRoutes = require('./routes/usuarioRoutes');
 
+// Ligação com o front end
+app.use(express.static(path.join(__dirname, '../public')));
+
 app.use('/usuarios', usuarioRoutes);
-app.listen(3000, () => console.log('Servidor rodando'));
+const PORTA = 3000; 
+app.listen(PORTA, () => console.log('Servidor rodando. Porta: '+ PORTA));
