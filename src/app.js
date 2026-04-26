@@ -1,25 +1,29 @@
-/*
-    ---- INSTALAÇÕES ----
-    Instale o nvm: https://github.com/coreybutler/nvm-windows/releases (Intale o nvm-setup.exe)
-    Instale o node v24.14.0 na sua máquina: 
-        nvm install 24.14.0 
-        nvm use 24.14.0
-    
-
-
-
-*/
-
-// Server: é o cérebro da api
 const express = require('express');
-const app = express();
 const path = require('path') // 
 
-const usuarioRoutes = require('./routes/usuarioRoutes');
+// const usuarioRoutes = require('./routes/usuarioRoutes');
+const tarefaRoutes = require('./routes/tarefaRoutes')
+const app = express();
+
+app.use(express.json());
 
 // Ligação com o front end
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/usuarios', usuarioRoutes);
-const PORTA = 3000; 
-app.listen(PORTA, () => console.log('Servidor rodando. Porta: '+ PORTA));
+app.use('/api/tarefas', tarefaRoutes)
+
+// app.use('/usuarios', usuarioRoutes);
+
+// Rota de saúde só para garantir que o Express não quebrou ao iniciar
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'Servidor no ar!' });
+});
+
+
+const PORT = 3000; 
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor de testes rodando na porta ${PORT}`);
+    console.log(`🔗 Health Check: http://localhost:${PORT}/api/health`);
+});
+
+module.exports = app;
