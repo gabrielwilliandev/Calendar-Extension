@@ -1,0 +1,33 @@
+name: CI Pipeline - Develop
+
+# Define quando essa pipeline vai rodar
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build-and-check:
+    name: Validar Código
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Baixa o código do repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Prepara o Node.js (usando a versão 24 que você tem na máquina)
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+
+      # 3. Instala as dependências (Express, etc)
+      - name: Instalar dependências
+        run: npm install
+
+      # 4. Checa se o app.js tem erros de sintaxe graves que impediriam o servidor de ligar
+      - name: Checagem de Sintaxe (Dry Run)
+        run: node -c src/app.js
