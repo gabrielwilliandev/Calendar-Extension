@@ -12,5 +12,12 @@ class UsuarioService{
         if(!email) throw new Error("O email é obrigatório para busca.");
         return await UsuarioRepository.buscarPorEmail(email);
     }
+
+    static async login(email, senha){
+        if(!email || !senha){
+            throw new Error("E-mail e senha são obrigatórios para realizar o login.");
+        }
+        return await UsuarioRepository.login(email, senha);
+    }
 }
 module.exports = UsuarioService;

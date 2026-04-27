@@ -15,8 +15,22 @@ class UsuarioController{
                 }
             });
         } catch (error){
-            console.error("Erro no cadastro de usuário:", error.mensage);
-            return res.status(400).json({erro: error.mensage})
+            console.error("Erro no cadastro de usuário:", error.message);
+            return res.status(400).json({erro: error.message})
+        }
+    }
+    static async login(req, res){
+        try{
+            const { email, senha} = req.body;
+
+            const dadosLogin = await UsuarioService.login(email, senha);
+
+            return res.status(200).json(dadosLogin);
+        }
+        catch (error){
+            console.error("Erro no login de usuário: ", error.message);
+
+            return res.status(401).json({erro: error.message});
         }
     }
 }
