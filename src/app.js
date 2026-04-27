@@ -1,18 +1,21 @@
 const express = require('express');
-const path = require('path') // 
+const path = require('path')
+const cors = require('cors')
 
-// const usuarioRoutes = require('./routes/usuarioRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 const tarefaRoutes = require('./routes/tarefaRoutes')
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+
 
 // Ligação com o front end
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/tarefas', tarefaRoutes)
 
-// app.use('/usuarios', usuarioRoutes);
+app.use('/api', usuarioRoutes);
 
 // Rota de saúde só para garantir que o Express não quebrou ao iniciar
 app.get('/api/health', (req, res) => {

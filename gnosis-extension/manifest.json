@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Gnosis",
+  "version": "1.0.0",
+  "description": "Gerenciador de atividades e notificações",
+  
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Abrir Gnosis",
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "notifications",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*" 
+  ]
+}
