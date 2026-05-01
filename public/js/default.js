@@ -39,3 +39,39 @@ function toggleSenha(id, icone) {
         icone.classList.replace('fa-eye-slash', 'fa-eye');
     }   
 }
+
+// CHAMAR AS ROTAS DO BACK END
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form_login');
+
+    if (!form) return; // evita erro em outras páginas
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('login_senha').value;
+
+        try {
+            const response = await fetch("/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, senha }) // Está enviando os dados em json
+            });
+
+            const data = await response.json(); // Retorno dos dados
+            console.log(data);
+
+            if (response.ok) {
+                window.location.href = "/home.html";
+            } else {
+                alert(data.erro || 'Login inválido');
+            }
+
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    });
+});

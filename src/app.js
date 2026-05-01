@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 // Ligação com o front end
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static("public"));
 
 app.use('/api/tarefas', tarefaRoutes)
 

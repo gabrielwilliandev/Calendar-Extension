@@ -5,7 +5,7 @@ class UsuarioController{
         try{
             const usuarioSalvo = await UsuarioService.cadastrar(req.body);
 
-            return res.status(201).json({
+            return res.status(201).json({ 
                 mensagem: "Usuario cadastrado com sucesso!",
                 usuario: {
                     id: usuarioSalvo.id,
@@ -21,9 +21,13 @@ class UsuarioController{
     }
     static async login(req, res){
         try{
-            const { email, senha} = req.body;
-
+            const { email, senha } = req.body;
+                        
             const dadosLogin = await UsuarioService.login(email, senha);
+
+            if (!dadosLogin) {
+                return res.status(401).json({ erro: "E-mail ou senha inválidos" });
+            }
 
             return res.status(200).json(dadosLogin);
         }
