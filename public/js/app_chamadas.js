@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://gnosis-api.whitesmoke-57ad5be1.eastus.azurecontainerapps.io/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 let redirecionandoPorSessaoExpirada = false;
 
 function exibirAvisoSessaoExpirada(mensagem) {
